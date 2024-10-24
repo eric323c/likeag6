@@ -1,1 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fly Like a G6 Lyrical Music Video</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      color: white;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .lyrics {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      opacity: 0;
+      white-space: nowrap;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+
+  <!-- YouTube embed for audio playback -->
+  <iframe id="ytplayer" type="text/html" width="0" height="0"
+    src="https://www.youtube.com/embed/w4s6H4ku6ZY?enablejsapi=1&autoplay=1&controls=0&origin=https://your-domain.com"
+    frameborder="0"></iframe>
+
+  <script>
+    // Initialize Canvas and Background
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    function drawBackground() {
+      let gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+      gradient.addColorStop(0, "purple");
+      gradient.addColorStop(1, "black");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    // Initialize Three.js Scene
+    let scene, camera, renderer, fireworks = [];
+
+    function initFireworks() {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 5;
+
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+    }
+
+    function createFirework() {
+      let firework = new THREE.Points(
+        new THREE.Geometry(),
+        new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 })
+      );
+      for (let i = 0; i < 100; i++) {
+        let particle = new THREE.Vector3(
+          (Math.random() - 0.5) * 2,
+          (Math.random() - 0.5) * 2,
+          (Math.random() - 0.5) * 2
+        );
+        firework.geometry.vertices.push(particle);
+      }
+      fireworks.push(firework);
+      scene.add(firework);
+    }
+
+    function animateFireworks() {
+      requestAnimationFrame(animateFireworks);
+      fireworks.forEach(f => {
+        f.rotation.x += 0.01;
+        f.rotation.y += 0.01;
+      });
+      renderer.render(scene, camera);
+    }
+
+    // Initialize Fireworks and Animation
+    initFireworks();
+    animateFireworks();
+
+    // YouTube API to Sync Lyrics
+    function onYouTubeIframeAPIReady() {
+      const player = new YT.Player('ytplayer', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      event.target.playVideo();
+    }
+
+    let lyrics = [
+      { time: 5, text: "Now I'm feelin' so fly" },
+      { time: 10, text: "Like a G6" },
+      { time: 15, text: "Sippin' sizzurp in my ride" },
+      { time: 20, text: "Like a G6" },
+      { time: 25, text: "Now I'm feelin' so fly" }
+    ];
+
+    function onPlayerStateChange(event) {
+      const currentTime = event.target.getCurrentTime();
+      
+      lyrics.forEach(lyric => {
+        if (Math.floor(currentTime) === lyric.time) {
+          displayLyric(lyric.text);
+        }
+      });
+
+      // Background Transition at Bass Drop
+      if (currentTime > 30 && currentTime < 32) {
+        drawBackground(); // Change background during this interval
+      }
+
+      // Fireworks Explosion at Bass Drop
+      if (currentTime > 45 && currentTime < 46) {
+        for (let i = 0; i < 5; i++) {
+          createFirework();
+        }
+      }
+    }
+
+    function displayLyric(text) {
+      const lyricElement = document.createElement('div');
+      lyricElement.className = 'lyrics';
+      lyricElement.innerHTML = text;
+      document.body.appendChild(lyricElement);
+
+      gsap.to(lyricElement, { 
+        duration: 2, 
+        opacity: 1, 
+        y: -50, 
+        ease: 'expo.inOut', 
+        onComplete: () => explodeText(lyricElement)
+      });
+    }
+
+    function explodeText(element) {
+      const chars = element.innerText.split('').map(c => {
+        const span = document.createElement('span');
+        span.innerText = c;
+        element.appendChild(span);
+        return span;
+      });
+
+      gsap.to(chars, {
+        y: () => Math.random() * 100 - 50,
+        x: () => Math.random() * 100 - 50,
+        opacity: 0,
+        stagger: 0.05,
+        duration: 1,
+        ease: 'power3.in',
+        onComplete: () => element.remove()
+      });
+    }
+  </script>
+</body>
+</html>
 
