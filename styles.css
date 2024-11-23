@@ -135,12 +135,6 @@ body {
   position: relative;
   z-index: 2; /* Keep it above the background image */
 }
-.hero-content h2 {
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow for contrast */
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1)); /* Subtle gradient for text readability */
-    padding: 5px 10px; /* Add spacing around the text */
-    border-radius: 5px; /* Smooth corners */
-}
 
 .postcard-title h2 {
   font-family: 'Dancing Script', cursive;
@@ -687,15 +681,6 @@ body {
 
 .hero-icons img:hover {
     transform: scale(1.2); /* Enlarge on hover */
-}
-
-/* Enhance text visibility on the hero section */
-.hero-content h2, .hero-content .hero-tagline {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for better contrast */
-}
-
-.hero-content h2 {
-    font-size: 4.5rem; /* Slightly larger for emphasis */
 }
 
 .hero-content .hero-tagline {
