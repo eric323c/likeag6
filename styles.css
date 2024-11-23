@@ -682,3 +682,17 @@ body {
 .hero-icons img:hover {
     transform: scale(1.2); /* Enlarge on hover */
 }
+
+/* Enhance text visibility on the hero section */
+.hero-content h2, .hero-content .hero-tagline {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for better contrast */
+}
+
+.hero-content h2 {
+    font-size: 4.5rem; /* Slightly larger for emphasis */
+}
+
+.hero-content .hero-tagline {
+    font-size: 1.8rem; /* Adjust size for better readability */
+}
+
