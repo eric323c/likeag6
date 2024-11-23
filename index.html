@@ -1,183 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fly Like a G6 Lyrical Music Video</title>
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-      background: black;
-      color: white;
-      font-family: 'Arial', sans-serif;
-    }
-
-    .lyrics {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 3rem;
-      opacity: 0;
-      white-space: nowrap;
-    }
-
-    canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beyond the Blonde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="bgCanvas"></canvas>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
 
-  <!-- YouTube embed for audio playback -->
-  <iframe id="ytplayer" type="text/html" width="0" height="0"
-    src="https://www.youtube.com/embed/w4s6H4ku6ZY?enablejsapi=1&autoplay=1&controls=0&origin=https://your-domain.com"
-    frameborder="0"></iframe>
+<!-- Navbar -->
+<div class="navbar">
+    <ul class="nav-left">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
 
-  <script>
-    // Initialize Canvas and Background
-    const canvas = document.getElementById('bgCanvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    <div class="logo">Beyond the Blonde</div>
 
-    function drawBackground() {
-      let gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      gradient.addColorStop(0, "purple");
-      gradient.addColorStop(1, "black");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    <ul class="nav-right">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#book">Book</a></li>
+    </ul>
 
-    // Initialize Three.js Scene
-    let scene, camera, renderer, fireworks = [];
+    <!-- Mobile Menu Icon -->
+    <div class="menu-icon">&#9776;</div>
+</div>
 
-    function initFireworks() {
-      scene = new THREE.Scene();
-      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-      camera.position.z = 5;
 
-      renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-    }
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="postcard-title">
+                <h2>Beyond The</h2>
+            </div>
+<div class="postcard-letter">
+    <span class="postcard-text" data-text="B">B</span>
+    <span class="postcard-text" data-text="L">L</span>
+    <span class="postcard-text" data-text="O">O</span>
+    <span class="postcard-text" data-text="N">N</span>
+    <span class="postcard-text" data-text="D">D</span>
+    <span class="postcard-text" data-text="E">E</span>
+</div>
+        </div>
+    </section>
 
-    function createFirework() {
-      let firework = new THREE.Points(
-        new THREE.Geometry(),
-        new THREE.PointsMaterial({ color: 0xffffff, size: 0.1 })
-      );
-      for (let i = 0; i < 100; i++) {
-        let particle = new THREE.Vector3(
-          (Math.random() - 0.5) * 2,
-          (Math.random() - 0.5) * 2,
-          (Math.random() - 0.5) * 2
-        );
-        firework.geometry.vertices.push(particle);
-      }
-      fireworks.push(firework);
-      scene.add(firework);
-    }
+<!-- About the Stylist Section -->
+<section id="about" class="about-section">
+    <div class="about-container">
+        <div class="about-image">
+            <img src="https://assets.onecompiler.app/42nwqrgbz/42nxmsv9x/lexie4.jpg" alt="Stylist Image">
+        </div>
+        <div class="about-content">
+            <h2>About Lexi</h2>
+            <p>Lexi is a professional hairstylist with over 10 years of experience. Her attention to detail and commitment to high-quality hair care has earned her a loyal following of clients who trust her with their most important hair moments—from everyday styles to special events. Lexi specializes in creating custom looks that enhance each client’s natural beauty.</p>
+            <a href="#experience" class="cta">Learn More</a>
+        </div>
+    </div>
+</section>
+<!-- Services Section -->
+<section id="services" class="services-section">
+    <div class="services-container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1485875437342-9b39470b3d95?q=80&w=1746&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Haircut">
+                <h3>Haircut & Styling</h3>
+                <p>Custom cuts and styles tailored to your unique look.</p>
+            </div>
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1565357419076-6acd4a10094e?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hair Color">
+                <h3>Hair Coloring</h3>
+                <p>Professional coloring services, from highlights to balayage.</p>
+            </div>
+            <div class="service-item">
+                <img src="https://images.unsplash.com/photo-1560869713-bf165a9cfac1?q=80&w=1826&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hair Treatment">
+                <h3>Hair Treatments</h3>
+                <p>Nourishing treatments to keep your hair healthy and vibrant.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    function animateFireworks() {
-      requestAnimationFrame(animateFireworks);
-      fireworks.forEach(f => {
-        f.rotation.x += 0.01;
-        f.rotation.y += 0.01;
-      });
-      renderer.render(scene, camera);
-    }
+<!-- Experience Section -->
+<section id="experience" class="experience-section">
+    <div class="experience-container">
+        <div class="experience-image">
+            <img src="https://plus.unsplash.com/premium_photo-1669675936132-cd68d8a1ac5f?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Salon Experience">
+        </div>
+        <div class="experience-content">
+            <h2>Experience Beyond the Blonde</h2>
+            <p>Our salon is more than just a place to get your hair done; it’s a space where you can relax, feel pampered, and leave looking your absolute best. From the moment you walk in, you’ll feel at home in our cozy and welcoming atmosphere.</p>
+            <p>We specialize in creating customized looks that highlight your natural beauty, making sure you feel confident and radiant. Whether you’re looking for a complete transformation or a subtle refresh, we’re here to help you achieve your hair goals.</p>
+            <a href="#book" class="cta">Book Your Experience</a>
+        </div>
+    </div>
+</section>
+<!-- Booking Section with Carousel and Booking Button -->
+<section id="book" class="booking-section">
+    <div class="booking-container">
+        <!-- Left Side: Booking Text and Image Carousel -->
+        <div class="booking-info">
+            <h2>Book Your Appointment</h2>
+            <div class="carousel">
+                <div class="carousel-images">
+                    <img src="https://images.unsplash.com/photo-1560264641-1b5191cc63e2?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hair Coloring">
+                    <img src="https://plus.unsplash.com/premium_photo-1683120994739-2be0d817c0e4?q=80&w=1888&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Hair Cut">
+                    <img src="https://images.pexels.com/photos/3738359/pexels-photo-3738359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Hair Highlights">
+                    <img src="https://images.pexels.com/photos/3738359/pexels-photo-3738359.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Hair Bleach">
+                </div>
+                <div class="carousel-controls">
+                    <button id="prev">&#10094;</button>
+                    <button id="next">&#10095;</button>
+                </div>
+            </div>
+        </div>
 
-    // Initialize Fireworks and Animation
-    initFireworks();
-    animateFireworks();
+        <!-- Right Side: Booking Info and Button -->
+        <div class="booking-iframe">
+            <h3>Ready to Transform Your Look?</h3>
+            <p>Click the button below to book your appointment with us. Explore all our services, and choose the one that suits your needs. We look forward to pampering you!</p>
+            <button class="open-booking-btn" onclick="openBookingPopup()">Book Your Service</button>
+        </div>
+    </div>
+</section>
 
-    // YouTube API to Sync Lyrics
-    function onYouTubeIframeAPIReady() {
-      const player = new YT.Player('ytplayer', {
-        events: {
-          'onReady': onPlayerReady,
-          'onStateChange': onPlayerStateChange
-        }
-      });
-    }
+<!-- Modal for Booking -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p>If the booking form does not load, please <a href="https://beyondtheblondee.glossgenius.com/services" target="_blank">click here</a> to book your appointment directly on our booking page.</p>
+        <button class="direct-booking-btn" onclick="window.open('https://beyondtheblondee.glossgenius.com/services', '_blank')">Open Booking Page</button>
+    </div>
+</div>
 
-    function onPlayerReady(event) {
-      event.target.playVideo();
-    }
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or would like to book an appointment, feel free to reach out to us. We’re here to help you with all your hair and beauty needs!</p>
+        <div class="contact-details">
+            <div class="contact-info">
+                <h3>Email</h3>
+                <p><a href="mailto:info@beyondtheblonde.com">info@beyondtheblonde.com</a></p>
+            </div>
+            <div class="contact-info">
+                <h3>Phone</h3>
+                <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+            </div>
+            <div class="contact-info">
+                <h3>Address</h3>
+                <p>123 Beauty Lane, Suite 4, City, State, ZIP</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-    let lyrics = [
-      { time: 5, text: "Now I'm feelin' so fly" },
-      { time: 10, text: "Like a G6" },
-      { time: 15, text: "Sippin' sizzurp in my ride" },
-      { time: 20, text: "Like a G6" },
-      { time: 25, text: "Now I'm feelin' so fly" }
-    ];
 
-    function onPlayerStateChange(event) {
-      const currentTime = event.target.getCurrentTime();
-      
-      lyrics.forEach(lyric => {
-        if (Math.floor(currentTime) === lyric.time) {
-          displayLyric(lyric.text);
-        }
-      });
-
-      // Background Transition at Bass Drop
-      if (currentTime > 30 && currentTime < 32) {
-        drawBackground(); // Change background during this interval
-      }
-
-      // Fireworks Explosion at Bass Drop
-      if (currentTime > 45 && currentTime < 46) {
-        for (let i = 0; i < 5; i++) {
-          createFirework();
-        }
-      }
-    }
-
-    function displayLyric(text) {
-      const lyricElement = document.createElement('div');
-      lyricElement.className = 'lyrics';
-      lyricElement.innerHTML = text;
-      document.body.appendChild(lyricElement);
-
-      gsap.to(lyricElement, { 
-        duration: 2, 
-        opacity: 1, 
-        y: -50, 
-        ease: 'expo.inOut', 
-        onComplete: () => explodeText(lyricElement)
-      });
-    }
-
-    function explodeText(element) {
-      const chars = element.innerText.split('').map(c => {
-        const span = document.createElement('span');
-        span.innerText = c;
-        element.appendChild(span);
-        return span;
-      });
-
-      gsap.to(chars, {
-        y: () => Math.random() * 100 - 50,
-        x: () => Math.random() * 100 - 50,
-        opacity: 0,
-        stagger: 0.05,
-        duration: 1,
-        ease: 'power3.in',
-        onComplete: () => element.remove()
-      });
-    }
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
-
