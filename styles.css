@@ -135,6 +135,12 @@ body {
   position: relative;
   z-index: 2; /* Keep it above the background image */
 }
+.hero-content h2 {
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7); /* Stronger shadow for contrast */
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1)); /* Subtle gradient for text readability */
+    padding: 5px 10px; /* Add spacing around the text */
+    border-radius: 5px; /* Smooth corners */
+}
 
 .postcard-title h2 {
   font-family: 'Dancing Script', cursive;
